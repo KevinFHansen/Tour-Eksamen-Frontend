@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./styles/style.css" rel="stylesheet">
+    <script src="./index.js" type="module"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding:1em;">
+        <ul id="menu" class="menu">
+          <li><a id="page-about" href="#">About</a></li>
+          <li><a id="page-competitors" href="#">Competitors</a></li>
+          <li><a id="page-add-competitors" href="#">Add/Edit Competitors</a></li>
+          <li><a id="page-teams" href="#">Teams</a></li>
+        </ul>
+      </div>
+      <div id="content" style="margin-left:15px;padding-top: 1em;"></div>
+    </div>
+    
+</body>
+</html>
+
+<template data-id="page-about">
+    <h2>About</h2>
+  </template>
+
+  <template data-id="page-competitors">
+    <h2>Competitors</h2>
+  </template>
+
+  <template data-id="page-add-competitors">
+    <h2>Add/Edit</h2>
+  </template>
+
+  <template data-id="page-teams">
+    <h2>Teams</h2>
+  </template>
