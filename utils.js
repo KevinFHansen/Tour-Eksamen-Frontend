@@ -16,7 +16,7 @@
   }
   
   export function setActive(newActive) {
-    const linkDivs = document.getElementById("menu").querySelectorAll("a")
+    const linkDivs = document.getElementById("navbar").querySelectorAll("a")
     linkDivs.forEach(div => {
       div.classList.remove("active")
     })

@@ -1,4 +1,5 @@
 import { renderTemplate, setActive, showPage } from "./utils.js"
+import{setupCompetitorHandlers, addNewCompetitor, editCompetitor} from "./js-for-pages/competitors.js"
 
 
 function renderMenuItems(evt) {
@@ -9,16 +10,18 @@ function renderMenuItems(evt) {
   switch (id) {
     //Here you can execute JavaScript for the selected page
     case "page-competitors": {
-      
+      setupCompetitorHandlers();
+
       break
     }
-    // case "page-add-candidates": {
-     
-    // }
+    case "page-add-competitors": {
+      document.getElementById("competitor-btn").onclick = addNewCompetitor;
+      document.getElementById("competitor-edit-btn").onclick = editCompetitor;
+     }
   }
 }
 
-document.getElementById("menu").onclick = renderMenuItems;
+document.getElementById("navbar").onclick = renderMenuItems;
 showPage("page-about") //Set the default page to render
 
 

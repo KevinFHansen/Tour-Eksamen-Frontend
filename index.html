@@ -10,18 +10,23 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="padding:1em;">
-        <ul id="menu" class="menu">
-          <li><a id="page-about" href="#">About</a></li>
-          <li><a id="page-competitors" href="#">Competitors</a></li>
-          <li><a id="page-add-competitors" href="#">Add/Edit Competitors</a></li>
-          <li><a id="page-teams" href="#">Teams</a></li>
-        </ul>
-      </div>
-      <div id="content" style="margin-left:15px;padding-top: 1em;"></div>
-    </div>
-    
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul id="navbar" class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" id="page-about" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" id="page-competitors" href="#">Competitors</a></li>
+          <li class="nav-item"><a class="nav-link" id="page-add-competitors" href="#">Add/Edit Competitors</a></li>
+          <li class="nav-item"><a class="nav-link" id="page-teams" href="#">Teams</a></li>
+  </ul>
+  </nav>
+  <div id="content"></div>
+
+
+
 </body>
+
 </html>
 
 <template data-id="page-about">
@@ -29,11 +34,84 @@
   </template>
 
   <template data-id="page-competitors">
-    <h2>Competitors</h2>
+    <h2 id="headerTitle">Competitors</h2>
+    <div>
+    
+      
+      <select name="team" id="team">
+          <option value="Jumbo-Visma">Jumbo-Visma</option>
+          <option value="Quick-Step Alpha Vinyl Team">Quick-Step Alpha Vinyl Team</option>
+          <option value="Trek - Segafredo">Trek - Segafredo</option>
+          
+      </select>
+    
+    
+    </select>
+    
+    <button id="btn-search">SEARCH</button>
+  </div>  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Nationality</th>
+          <th>Total Climber Points</th>
+          <th>Total Sprint Points</th>
+          <th>Total Time</th>
+          <th>Team</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="tbl-body" class="competitor-tr">
+      </tbody>
+    </table>
   </template>
 
   <template data-id="page-add-competitors">
     <h2>Add/Edit</h2>
+    
+    <div>
+
+      <h2>Create New Candidate</h2>
+      <form class="create-new-competitor">
+          <input type="text" id="firstname-competitor" placeholder="First Name">
+          <input type="text" id="lastname-competitor" placeholder="Last Name">
+          <input type="text" id="age-competitor" placeholder="Age">
+          <input type="text" id="nationality-competitor" placeholder="Nationality">
+          <input type="text" id="climberpoints-competitor" placeholder="Climber Points">
+          <input type="text" id="sprintpoints-competitor" placeholder="Sprint Points">
+          <input type="text" id="totaltime-competitor" placeholder="Total Time">
+          <input type="text" id="imageurl-competitor" placeholder="Image Url">
+          <input type="text" id="team-competitor" placeholder="Team ID">
+          <button type="submit" id="competitor-btn">Create Competitor</button>
+
+      </form>
+
+    </div>
+
+    <br><br><br><br><br><br><br>
+
+    <div>
+      <h2>Edit Competitor</h2>
+      <form class="edit-competitor">
+          <input type="text" id="id-competitor-edit" placeholder="ID">
+          <input type="text" id="firstname-competitor-edit" placeholder="First Name">
+          <input type="text" id="lastname-competitor-edit" placeholder="Last Name">
+          <input type="text" id="age-competitor-edit" placeholder="Age">
+          <input type="text" id="nationality-competitor-edit" placeholder="Nationality">
+          <input type="text" id="climberpoints-competitor-edit" placeholder="Climber Points">
+          <input type="text" id="sprintpoints-competitor-edit" placeholder="Sprint Points">
+          <input type="text" id="totaltime-competitor-edit" placeholder="Total Time">
+          <input type="text" id="imageurl-competitor-edit" placeholder="Image Url">
+          <input type="text" id="team-competitor-edit" placeholder="Team ID">
+          <button type="submit" id="competitor-edit-btn">Edit Competitor</button>
+
+      </form>
+    </div>
+
   </template>
 
   <template data-id="page-teams">

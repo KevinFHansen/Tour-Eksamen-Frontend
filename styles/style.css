@@ -17,3 +17,7 @@ ul {
     /*background-color: #04aa6d;*/
     color:black;
   }
+
+  tr:nth-child(1) td {
+    background-color: #fcdb47;
+  }
