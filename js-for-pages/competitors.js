@@ -6,19 +6,18 @@ const competitorURL = URL + "/competitors/"
 
 export function setupCompetitorHandlers(){
     getCompetitors();
-    document.getElementById("btn-search").onclick = setUrlParam;
+    document.getElementById("btn-search").onclick = getCompetitorsByTeam;
     
 }
 
  async function getCompetitors (){
     try{
-    console.log("#1")
+
     const competitors = await fetch("http://localhost:8080/api/competitors/").then(res => handleHttpErrors(res))
-    console.log(competitors)
     competitors.sort((a, b) => parseFloat(a.totalTime) - parseFloat(b.totalTime));
     const rows = competitors.map(c=>
         `
-        <tr id="tester">
+        <tr>
         
         <td> ${c.id}</td>
         <td> ${c.firstName}</td>
@@ -35,27 +34,20 @@ export function setupCompetitorHandlers(){
         
         `)
         .join("")
-        document.getElementById("tbl-body").innerHTML = rows
-        
-    
-        
+        document.getElementById("tbl-body").innerHTML = rows   
 } 
-
 catch(err){
     console.log(err.message)
 }
 }
 
-
-
- async function setUrlParam (){
+ async function getCompetitorsByTeam (){
     try{
         
     document.getElementById("tbl-body").innerHTML = ""
     
     let select = document.getElementById('team');
     let value = select.options[select.selectedIndex].value;
-    console.log(value);
 
     const competitorsByTeamName = await fetch(competitorURL + "?team=" + value).then(res => handleHttpErrors(res))
     competitorsByTeamName.sort((a, b) => parseFloat(a.totalTime) - parseFloat(b.totalTime));
@@ -73,8 +65,6 @@ const rows = competitorsByTeamName.map(c=>
     <td> ${c.totalTime}</td>
     <td> ${c.teamResponse.name}</td>
     <td> <img src = "${c.imageUrl}"></img> </td>
-
-    
     <td> <button id="competitor-delete-btn" class="competitor-delete">Delete</button></td>
     
     </tr>
@@ -84,11 +74,9 @@ const rows = competitorsByTeamName.map(c=>
     document.getElementById("headerTitle").innerHTML = value;    
   
     const tbody = document.querySelectorAll(".competitor-delete").forEach((element ) =>{
-        console.log(element)
         element.addEventListener("click", (e)=> {
             e.preventDefault();
             let id = e.target.parentElement.parentElement.dataset.id
-            console.log(id + " Her")
             fetch("http://localhost:8080/api/competitors/" + id, {
                 method: "DELETE",
             })
@@ -114,7 +102,6 @@ export function addNewCompetitor(){
     const imageUrl = document.getElementById("imageurl-competitor").value
     const team = document.getElementById("team-competitor").value
     const teamId = {id: team}
-    console.log("hello")
     fetch("http://localhost:8080/api/competitors/", {
         method: "POST",
         headers: {
@@ -137,7 +124,6 @@ export function addNewCompetitor(){
 
 export function editCompetitor(){
     const id = document.getElementById("id-competitor-edit").value
-    console.log(id)
     const firstName = document.getElementById("firstname-competitor-edit").value
     const lastName = document.getElementById("lastname-competitor-edit").value
     const age = document.getElementById("age-competitor-edit").value
@@ -149,7 +135,6 @@ export function editCompetitor(){
     const team = document.getElementById("team-competitor-edit").value
     const teamId = {id: team}
     
-    console.log("hello")
     fetch("http://localhost:8080/api/competitors/" + id, {
         method: "PUT",
         headers: {
