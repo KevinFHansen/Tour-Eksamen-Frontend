@@ -13,7 +13,7 @@ export function setupCompetitorHandlers(){
  async function getCompetitors (){
     try{
 
-    const competitors = await fetch("http://localhost:8080/api/competitors/").then(res => handleHttpErrors(res))
+    const competitors = await fetch("https://cykelholdetbackend.azurewebsites.net/api/competitors/").then(res => handleHttpErrors(res))
     competitors.sort((a, b) => parseFloat(a.totalTime) - parseFloat(b.totalTime));
     const rows = competitors.map(c=>
         `
@@ -77,7 +77,7 @@ const rows = competitorsByTeamName.map(c=>
         element.addEventListener("click", (e)=> {
             e.preventDefault();
             let id = e.target.parentElement.parentElement.dataset.id
-            fetch("http://localhost:8080/api/competitors/" + id, {
+            fetch("https://cykelholdetbackend.azurewebsites.net/api/competitors/" + id, {
                 method: "DELETE",
             })
               
@@ -102,7 +102,7 @@ export function addNewCompetitor(){
     const imageUrl = document.getElementById("imageurl-competitor").value
     const team = document.getElementById("team-competitor").value
     const teamId = {id: team}
-    fetch("http://localhost:8080/api/competitors/", {
+    fetch("https://cykelholdetbackend.azurewebsites.net/api/competitors/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -135,7 +135,7 @@ export function editCompetitor(){
     const team = document.getElementById("team-competitor-edit").value
     const teamId = {id: team}
     
-    fetch("http://localhost:8080/api/competitors/" + id, {
+    fetch("https://cykelholdetbackend.azurewebsites.net/api/competitors/" + id, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
