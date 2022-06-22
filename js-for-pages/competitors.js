@@ -49,7 +49,7 @@ catch(err){
     let select = document.getElementById('team');
     let value = select.options[select.selectedIndex].value;
 
-    const competitorsByTeamName = await fetch(competitorURL + "?team=" + value).then(res => handleHttpErrors(res))
+    const competitorsByTeamName = await fetch("https://cykelholdetbackend.azurewebsites.net/api/competitors" + "?team=" + value).then(res => handleHttpErrors(res))
     competitorsByTeamName.sort((a, b) => parseFloat(a.totalTime) - parseFloat(b.totalTime));
 const rows = competitorsByTeamName.map(c=>
     `
